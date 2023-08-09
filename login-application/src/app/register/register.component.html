@@ -1,4 +1,4 @@
-<section class="vh-100 gradient-custom">
+<section class="vh-150 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -6,25 +6,41 @@
 
           <form class="card-body p-4 text-center">
             <div class="mb-md-5 mt-md-4 pb-5">
-              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
               <p class="text-white-50 mb-5">
-                Please enter your login and password!
+                Please fill on the fileds to complete registration!
               </p>
 
               <div class="form-outline form-white mb-4">
                 <input type="email" id="typeEmailX" class="form-control form-control-lg" required />
                 <label class="form-label" for="typeEmailX">Email</label>
               </div>
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" required />
+                <label class="form-label" for="typeEmailX">Username</label>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" required />
+                <label class="form-label" for="typeEmailX">First name</label>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="typeEmailX" class="form-control form-control-lg" required />
+                <label class="form-label" for="typeEmailX">Last name</label>
+              </div>
 
               <div class="form-outline form-white mb-4">
                 <input type="password" id="typePasswordX" class="form-control form-control-lg" required />
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
+              <div class="form-outline form-white mb-4">
+                <input type="password" id="typePasswordX" class="form-control form-control-lg" required />
+                <label class="form-label" for="typePasswordX">Re-password</label>
+              </div>
 
-              <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onLogin()">
+              <button class="btn btn-outline-light btn-lg px-5 mx-2" type="submit">
                 Cancel
               </button>
-              <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onRegister()">
+              <button class="btn btn-outline-light btn-lg px-5 mx-2" type="submit">
                 Register
               </button>
 
