@@ -7,6 +7,7 @@ import {FormBuilder, FormControl, FormGroup, Validator, Validators} from "@angul
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
@@ -17,12 +18,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.pattern(/^[^\s]+$/)]],
     });
   }
-
-  isValid: boolean = true;
-  isEmpty : boolean = false;
 
   onRegister() {
     this.router.navigate(['/register']);
@@ -30,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     this.submitted = true;
-
-
+    if(!this.loginForm.valid) {
+      return;
+    }
   }
 }
