@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {User} from "../models/User";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,9 @@ export class LoginComponent {
   onRegister(){
     this.router.navigate(['/register']);
   }
-  onLogin(){
+  onLogin() {
     this.router.navigate(['/login']);
   }
+
+
 }
