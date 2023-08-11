@@ -12,28 +12,32 @@
               </p>
 
               <div class="form-outline form-white mb-4">
-                <label class="form-label" for="typeEmailX">First name*</label>
+                <label class="form-label" for="firstName">First name*</label>
                 <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName" required />
-                <p *ngIf="(submitted) && registerForm.get('firstName')?.errors?.['required']" class="error-message">First name is required!</p>
+                <p *ngIf="(submitted) && firstNameRequiredError()" class="error-message">First name is required!</p>
+                <p *ngIf="(submitted) && !firstNameRequiredError() && firstNamePatternError()" class="error-message">First name is not valid!</p>
+
               </div>
               <div class="form-outline form-white mb-4">
-                <label class="form-label" for="typeEmailX">Last name*</label>
+                <label class="form-label" for="lastName">Last name*</label>
                 <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName" required />
-                <p *ngIf="(submitted) && registerForm.get('lastName')?.errors?.['required']" class="error-message">Last name is required!</p>
+                <p *ngIf="(submitted) && lastNameRequiredError()" class="error-message">Last name is required!</p>
+                <p *ngIf="(submitted) && !lastNameRequiredError() && lastNamePatternError()" class="error-message">Last name is not valid!</p>
+
               </div>
               <div class="form-outline form-white mb-4">
-                <label class="form-label" for="typeEmailX">Email*</label>
+                <label class="form-label" for="email">Email*</label>
                 <input type="email" id="email" class="form-control form-control-lg" formControlName="email" required />
                 <p *ngIf="(submitted) && registerForm.get('email')?.errors?.['required']" class="error-message">Email is required!</p>
                 <p *ngIf="(submitted) && registerForm.get('email')?.errors?.['email']" class="error-message">Enter valid an email address</p>
               </div>
               <div class="form-outline form-white mb-4">
-                <label class="form-label" for="typePasswordX">Password*</label>
+                <label class="form-label" for="password">Password*</label>
                 <input type="password" id="password" class="form-control form-control-lg" formControlName="password" required />
                 <p *ngIf="(submitted) && registerForm.get('password')?.errors?.['required']" class="error-message">Password is required!</p>
               </div>
               <div class="form-outline form-white mb-4">
-                <label class="form-label" for="typePasswordX">Re-password*</label>
+                <label class="form-label" for="repassword">Re-password*</label>
                 <input type="password" id="repassword" class="form-control form-control-lg" formControlName="repassword" required />
                 <p *ngIf="(submitted) && registerForm.get('repassword')?.errors?.['required']" class="error-message">Re-password is required!</p>
               </div>

@@ -17,13 +17,29 @@ export class RegisterComponent  implements OnInit{
 
   constructor(private router: Router ,private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required ]],
-      lastName: ['', [Validators.required]],
+      firstName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
+      lastName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
       password: ['', [Validators.required, Validators.pattern(/^[^\s]+$/)]],
       repassword: ['', [Validators.required, Validators.pattern(/^[^\s]+$/)]],
       email: ['', [Validators.required, Validators.email]],
 
     });
+  }
+
+  firstNameRequiredError() {
+    return this.registerForm.get('firstName')?.errors?.['required']
+  }
+
+  firstNamePatternError() {
+    return this.registerForm.get('firstName')?.errors
+  }
+
+  lastNameRequiredError() {
+    return this.registerForm.get('lastName')?.errors?.['required']
+  }
+
+  lastNamePatternError() {
+    return this.registerForm.get('lastName')?.errors
   }
 
 
