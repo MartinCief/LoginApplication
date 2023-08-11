@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onRegister(){
+  onRegister() {
     this.router.navigate(['/register']);
   }
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     if(!this.loginForm.valid) {
       return;
-    }else{
+     }else{
       alert("Welcome");
     }
   }
