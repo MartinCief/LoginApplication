@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     if(!this.loginForm.valid) {
       return;
      }else{
-      alert("Welcome");
+      this.router.navigate(['/mainpage']);
     }
   }
 }
