@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MainpageComponent } from './mainpage/mainpage.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
