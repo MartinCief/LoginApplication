@@ -17,19 +17,22 @@ export class LoginService {
    
   }
 
-
-  login(user: User){
-    this._httpService.loginUser(user).subscribe({
-      next: (result) => {
-        console.log(result);
-        this.router.navigate(['/mainpage'])
-      },
-      error: (error) => {
-        if (error instanceof HttpErrorResponse) {
-          console.log(error);
-          
+   login(user: User): Observable<boolean> {
+    return new Observable<boolean>(observer => {
+      this._httpService.loginUser(user).subscribe({
+        next: (result) => {
+          console.log(result);
+          observer.next(result.valueOf());
+          observer.complete();
+        },
+        error: (error) => {
+          if (error instanceof HttpErrorResponse) {
+            console.log(error);
+          }
+          observer.next(false);
+          observer.complete();
         }
-      }
-    })
+      });
+    });
   }
 }
