@@ -1,0 +1,70 @@
+<section class="vh-150 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem">
+
+          <form class="card-body p-4 text-center" [formGroup]="registerForm" (submit)="onRegister()">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
+              <p class="text-white-50 mb-5">
+                Please fill on the fileds to complete registration!
+              </p>
+
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="firstName">First name*</label>
+                <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName" required />
+                <p *ngIf="(submitted) && firstNameRequiredError()" class="error-message">First name is required!</p>
+                <p *ngIf="(submitted) && !firstNameRequiredError() && firstNamePatternError()" class="error-message">First name is not valid!</p>
+
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="lastName">Last name*</label>
+                <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName" required />
+                <p *ngIf="(submitted) && lastNameRequiredError()" class="error-message">Last name is required!</p>
+                <p *ngIf="(submitted) && !lastNameRequiredError() && lastNamePatternError()" class="error-message">Last name is not valid!</p>
+
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="email">Email*</label>
+                <input type="email" id="email" class="form-control form-control-lg" formControlName="email" required />
+                <p *ngIf="(submitted) && registerForm.get('email')?.errors?.['required']" class="error-message">Email is required!</p>
+                <p *ngIf="(submitted) && registerForm.get('email')?.errors?.['email']" class="error-message">Enter valid an email address</p>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="username">Username*</label>
+                <input type="text" id="username" class="form-control form-control-lg" formControlName="username" required />
+                <p *ngIf="(submitted) && userNameRequiredError()" class="error-message">Username is required!</p>
+                <p *ngIf="(submitted) && !userNameRequiredError() && userNamePatternError()" class="error-message">Last name is not valid!</p>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="password">Password*</label>
+                <input type="password" id="password" class="form-control form-control-lg" formControlName="password" required />
+                <p *ngIf="(submitted) && registerForm.get('password')?.errors?.['required']" class="error-message">Password is required!</p>
+                <p *ngIf="registerForm.get('password')?.hasError('pattern')" class="error-message">Password must meet the specified pattern requirements</p>
+                <p class="text-white-50">*1 malo slovo,1 veliko slovo,1 karakter,1 broj, 8-32 karaktera*</p>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <label class="form-label" for="repassword">Re-password*</label>
+                <input type="password" id="repassword" class="form-control form-control-lg" formControlName="repassword" required />
+                <p *ngIf="(submitted) && registerForm.get('repassword')?.errors?.['required']" class="error-message">Re-password is required!</p>
+              </div>
+
+              <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onCancel()">
+                Back to login
+              </button>
+              <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onRegister()">
+                Register
+              </button>
+
+
+              </div>
+
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
