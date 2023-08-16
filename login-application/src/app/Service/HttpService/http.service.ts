@@ -22,8 +22,8 @@ export class HttpService {
       })
   }
 
-  registerUser(register : Register) : Observable<boolean> {
-     return this.http.post<boolean>("url", register, {
+  registerUser(register : Register) : Observable<{ success: boolean, message: string }> {
+     return this.http.post<{success: boolean, message: string}>("url", register, {
        headers : this.headers
      })
   }

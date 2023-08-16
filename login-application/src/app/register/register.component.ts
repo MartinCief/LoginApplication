@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Register} from "../models/User";
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {RegisterService} from "../Service/RegisterService/register.service";
 
 @Component({
   selector: 'app-register',
@@ -12,10 +13,13 @@ export class RegisterComponent  implements OnInit{
 
   registerForm: FormGroup;
   submitted = false;
+  usernameAlreadyExists = false;
   ngOnInit() {
   }
 
-  constructor(private router: Router ,private formBuilder: FormBuilder) {
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private registerService : RegisterService) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
       lastName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
@@ -58,8 +62,25 @@ export class RegisterComponent  implements OnInit{
     this.submitted = true;
     if(!this.registerForm.valid) {
       return;
-    }else{
-      alert("Register works!");
+    }else {
+
+      let register: Register = {
+        firstName: this.registerForm.value.firstName,
+        lastName: this.registerForm.value.lastName,
+        password: this.registerForm.value.password,
+        username: this.registerForm.value.username
+      }
+      this.registerService.register(register).subscribe(result => {
+        if (result.success) {
+          this.router.navigate(['/mainpage']);
+        } else {
+          if (result.message === "")
+            this.usernameAlreadyExists = true;
+          alert("Registration failed: " + result.message);
+        }
+      }, error => {
+        alert("An error occurred while registering.");
+      });
     }
   }
 }
