@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { HttpClientModule } from "@angular/common/http";
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
