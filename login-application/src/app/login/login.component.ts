@@ -12,6 +12,7 @@ import { LoginService } from '../Service/LoginService/login.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
+  isAuthenticated = true;
 
   ngOnInit() {
   }
@@ -36,13 +37,14 @@ export class LoginComponent implements OnInit {
         username : this.loginForm.value.username,
         password : this.loginForm.value.password
       }
-      let  result = this.loginService.login(user);
-      if (result) {
-        this.router.navigate(['/mainpage'])
-      } else {
-        alert("Username or password is invalid!")
-      }
-      
+      this.loginService.login(user).subscribe(result => {
+        if (result) {
+          this.router.navigate(['/mainpage']);
+        }
+        this.isAuthenticated = false;
+      });
     }
-  }
+
+    }
+
 }
