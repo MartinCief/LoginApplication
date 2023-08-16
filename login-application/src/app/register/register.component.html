@@ -36,6 +36,7 @@
                 <input type="password" id="password" class="form-control form-control-lg" formControlName="password" required />
                 <p *ngIf="(submitted) && registerForm.get('password')?.errors?.['required']" class="error-message">Password is required!</p>
                 <p *ngIf="registerForm.get('password')?.hasError('pattern')" class="error-message">Password must meet the specified pattern requirements</p>
+                <p class="text-white-50">*1 malo slovo,1 veliko slovo,1 karakter,1 broj, 8-32 karaktera*</p>
               </div>
               <div class="form-outline form-white mb-4">
                 <label class="form-label" for="repassword">Re-password*</label>
