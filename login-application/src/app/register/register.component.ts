@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {Register} from "../models/User";
 import {FormBuilder, FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {RegisterService} from "../Service/RegisterService/register.service";
+import { matchpassword } from './matchpassword.validator';
 
 @Component({
   selector: 'app-register',
@@ -24,11 +25,15 @@ export class RegisterComponent  implements OnInit{
       firstName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
       lastName: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
       username: ['', [Validators.required, Validators.pattern(/^[^\s\d]+$/)]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-~.;(){}|/*@#$%^&+=!])(?!.*\s).{8,32}$/),]],
-      repassword: ['', [Validators.required, Validators.pattern(/^[^\s]+$/)]],
+      password: [null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-~.;(){}|/*@#$%^&+=!])(?!.*\s).{8,32}$/),]],
+      repassword: [null, [Validators.required, Validators.pattern(/^[^\s]+$/)]],
       email: ['', [Validators.required, Validators.email]],
 
-    });
+    },
+    {
+      validators:matchpassword
+    }
+    );
   }
 
   firstNameRequiredError() {
