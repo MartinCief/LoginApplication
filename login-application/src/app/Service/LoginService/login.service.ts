@@ -6,15 +6,13 @@ import { User } from 'src/app/models/User';
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from '@angular/router';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
   constructor(private _httpService: HttpService, private router: Router, ) {
-   
+
   }
 
    login(user: User): Observable<boolean> {
