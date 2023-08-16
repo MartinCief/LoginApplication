@@ -53,7 +53,7 @@
               <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onCancel()">
                 Back to login
               </button>
-              <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onRegister()">
+              <button [disabled]="registerForm.invalid" class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onRegister()">
                 Register
               </button>
 
