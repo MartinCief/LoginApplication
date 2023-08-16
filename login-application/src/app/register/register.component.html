@@ -32,6 +32,12 @@
                 <p *ngIf="(submitted) && registerForm.get('email')?.errors?.['email']" class="error-message">Enter valid an email address</p>
               </div>
               <div class="form-outline form-white mb-4">
+                <label class="form-label" for="username">Username*</label>
+                <input type="text" id="username" class="form-control form-control-lg" formControlName="username" required />
+                <p *ngIf="(submitted) && userNameRequiredError()" class="error-message">Username is required!</p>
+                <p *ngIf="(submitted) && !userNameRequiredError() && userNamePatternError()" class="error-message">Last name is not valid!</p>
+              </div>
+              <div class="form-outline form-white mb-4">
                 <label class="form-label" for="password">Password*</label>
                 <input type="password" id="password" class="form-control form-control-lg" formControlName="password" required />
                 <p *ngIf="(submitted) && registerForm.get('password')?.errors?.['required']" class="error-message">Password is required!</p>

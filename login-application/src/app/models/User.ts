@@ -6,6 +6,7 @@ export interface User {
 export interface Register extends User {
   firstName : string,
   lastName : string,
+  email:string
 }
 
 
