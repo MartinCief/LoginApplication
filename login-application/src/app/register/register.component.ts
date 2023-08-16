@@ -74,11 +74,9 @@ export class RegisterComponent  implements OnInit{
       this.registerService.register(register).subscribe(result => {
         if (result.success) {
           this.router.navigate(['/mainpage']);
-        } else {
-          if (result.message === "")
-            this.usernameAlreadyExists = true;
-          alert("Registration failed: " + result.message);
         }
+        if (result.message === "")
+          this.usernameAlreadyExists = true;
       }, error => {
         alert("An error occurred while registering.");
       });

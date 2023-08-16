@@ -23,6 +23,10 @@
                 <p *ngIf="(submitted) && loginForm.get('password')?.errors" class="error-message">Password is required!</p>
               </div>
 
+              <div class="alert alert-danger" *ngIf="!isAuthenticated">
+              Username or password is incorrect
+              </div>
+
               <button class="btn btn-outline-light btn-lg px-5 mx-2" type="submit">
                 Login
               </button>
