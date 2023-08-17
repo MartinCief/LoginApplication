@@ -17,13 +17,13 @@ export class HttpService {
   });
 
    loginUser(user : User) : Observable<boolean> {
-      return this.http.post<boolean>("url", user, {
+      return this.http.post<boolean>("http://localhost:5000/api/Account/login", user, {
         headers : this.headers
       })
   }
 
   registerUser(register : Register) : Observable<{ success: boolean, message: string }> {
-     return this.http.post<{success: boolean, message: string}>("url", register, {
+     return this.http.post<{success: boolean, message: string}>("http://localhost:5000/api/Account/register", register, {
        headers : this.headers
      })
   }

@@ -77,7 +77,7 @@ export class RegisterComponent  implements OnInit{
         email : this.registerForm.value.email
       }
       this.registerService.register(register).subscribe(result => {
-        if (result.success) {
+        if (result) {
           this.router.navigate(['/mainpage']);
         }
         if (result.message === "")
