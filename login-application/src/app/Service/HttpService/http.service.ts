@@ -22,8 +22,8 @@ export class HttpService {
       })
   }
 
-  registerUser(register : Register) : Observable<{ success: boolean, message: string }> {
-     return this.http.post<{success: boolean, message: string}>("http://localhost:5000/api/Account/register", register, {
+  registerUser(register : Register) : Observable<{ status: string}> {
+     return this.http.post<{status: string}>("http://localhost:5000/api/Account/register", register, {
        headers : this.headers
      })
   }

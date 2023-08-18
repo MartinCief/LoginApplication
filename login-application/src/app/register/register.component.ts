@@ -77,10 +77,10 @@ export class RegisterComponent  implements OnInit{
         email : this.registerForm.value.email
       }
       this.registerService.register(register).subscribe(result => {
-        if (result) {
+        if (result.status === "UserRegistrationSuccessful") {
           this.router.navigate(['/mainpage']);
         }
-        if (result.message === "")
+        if (result.status === "UserAlreadyRegistered")
           this.usernameAlreadyExists = true;
       }, error => {
         alert("An error occurred while registering.");

@@ -12,12 +12,11 @@ export class RegisterService {
   constructor(private _httpService: HttpService) {
   }
 
-  register(register: Register): Observable<{ success: boolean, message: string }> {
+  register(register: Register): Observable<{ status: string}> {
     return this._httpService.registerUser(register).pipe(
       map(response => {
         return {
-          success: response.success,
-          message: response.message
+          status: response.status
         };
       })
     );
