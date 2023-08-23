@@ -54,6 +54,10 @@
                 <p *ngIf="(submitted) && registerForm.get('repassword')?.errors?.['required']" class="error-message">Re-password is required!</p>
               </div>
 
+              <div class="alert alert-danger" [(ngModel)]="message">
+                {{ message }}
+              </div>
+
               <button class="btn btn-outline-light btn-lg px-5 mx-2" (click)="onCancel()">
                 Back to login
               </button>

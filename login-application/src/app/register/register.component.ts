@@ -15,6 +15,7 @@ export class RegisterComponent  implements OnInit{
   registerForm: FormGroup;
   submitted = false;
   usernameAlreadyExists = false;
+  message: string = "";
   ngOnInit() {
   }
 
@@ -77,9 +78,14 @@ export class RegisterComponent  implements OnInit{
         email : this.registerForm.value.email
       }
       this.registerService.register(register).subscribe({
-        next: (register) => {
-          this.router.navigate(['/mainpage']);
-          console.log(register)},
+        next: (result) => {
+          if (result.status === "0") {
+            // this.router.navigate(['/mainpage']);
+            this.message = "User already registered"
+          } else if (result.status === "1") {
+            this.message = "User registration is successful"
+          }
+          console.log(result)},
         error:(response) =>{
           console.log(response);
         }
